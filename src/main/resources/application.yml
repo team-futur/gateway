@@ -1,0 +1,20 @@
+server:
+  port: 2020
+
+spring:
+  application:
+    name: gateway-service
+  cloud:
+    gateway:
+      routes:
+        - id: certification-service
+          uri: http://localhost:3030/
+          predicates:
+            - Path=/certification/**
+
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka
